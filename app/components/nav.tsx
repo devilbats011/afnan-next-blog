@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import Midnight from "./night";
@@ -30,8 +30,8 @@ const navItems = {
 };
 
 export function Navbar() {
-  function wip() {
-
+  useEffect(() => {
+    function initMoveColorWithCursor() {
       const interBubble =
         document.querySelector<HTMLDivElement>(".interactive")!;
       let curX = 0;
@@ -50,27 +50,51 @@ export function Navbar() {
         });
       }
 
-      window.addEventListener("mousemove", (event) => {
-
-        console.log('move');
+      const mouseMoveHandler = (event: MouseEvent) => {
         tgX = event.clientX;
         tgY = event.clientY;
-      });
+      };
+
+      window.addEventListener("mousemove", mouseMoveHandler);
       move();
+
+      return () => {
+        window.removeEventListener("mousemove", mouseMoveHandler);
+      };
+    }
+    const cleanup = initMoveColorWithCursor();
+    return cleanup;
+  }, []);
+
+  function changeToFunkyTheme(event) {
+    const root = document.documentElement;
+    root.style.setProperty("--color-bg1", "rgb(108, 0, 162)");
+    root.style.setProperty("--color-bg2", "rgb(0, 17, 82)");
+    root.style.setProperty("--color1", "18, 113, 255");
+    root.style.setProperty("--color2", "221, 74, 255");
+    root.style.setProperty("--color3", "100, 220, 255");
+    root.style.setProperty("--color4", "200, 50, 50");
+    root.style.setProperty("--color5", "180, 180, 50");
+    root.style.setProperty("--color-interactive", "140, 100, 255");
   }
 
-  useEffect(() => {
-    wip();
-    return () => {
+  function changeToMidnightTheme() {
+    const root = document.documentElement;
+    root.style.setProperty("--color-bg1", "rgb(0, 17, 82)");
+    root.style.setProperty("--color-bg2", "rgb(0, 0, 0)");
+    root.style.setProperty("--color1", "24, 40, 200");
+    root.style.setProperty("--color2", "140, 100, 255");
+    root.style.setProperty("--color3", "0, 166, 251");
+    root.style.setProperty("--color4", "151, 1, 172");
+    root.style.setProperty("--color5", "0, 166, 251");
+    root.style.setProperty("--color-interactive", "0, 166, 251");
+  }
 
-    }
-  }, [])
-  
   return (
     <aside className="-ml-[8px] mb-16 tracking-tight">
       <div className="lg:sticky lg:top-20">
         <nav
-          className=" flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
+          className=" flex flex-row items-start relative px-0 pb-0 fade scroll-pr-6 md:relative"
           id="nav"
         >
           <div className="flex flex-row space-x-0 pr-10">
@@ -87,14 +111,19 @@ export function Navbar() {
             })}
           </div>
           <div className=" items-center justify-end h-full w-full text-sm responsive-theme">
-            <div className="flex flex-col gap-4">
-              <button className="cursor-pointer text-center border py-2 px-6 flex gap-2 items-center justify-center">
-                {" "}
-                Funky <Fire />{" "}
+            <div className="flex flex-col gap-6">
+              <button
+                className="cursor-pointer text-center border py-2.5 px-4 flex gap-2 items-center justify-center midnight-btn btn-theme"
+                onClick={changeToMidnightTheme}
+              >
+                Midnight <Midnight />
               </button>
-              <button className="cursor-pointer text-center border py-2 px-6 flex gap-2 items-center justify-center">
-                {" "}
-                Midnight <Midnight />{" "}
+              
+              <button
+                onClick={changeToFunkyTheme}
+                className="cursor-pointer text-center border py-2.5 px-4 flex gap-2 items-center justify-center fruity-btn btn-theme"
+              >
+                Funky <Fire />
               </button>
             </div>
           </div>

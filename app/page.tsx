@@ -12,8 +12,7 @@ export default function Page() {
           <i> Afnan </i>
         </b>
         , I am a passionate web programmer with years of experience in both{" "}
-        <i>front-end and back-end web</i>
-        development. <br />
+        <i>front-end and back-end web</i> development. <br />
         <br />I also have some experience in web design working with tools like
         Figma and familiar with some <i> design system </i> like flowbite and
         material design.
