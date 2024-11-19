@@ -21,8 +21,12 @@ export default function Page() {
         My goal is to leverage my technical expertise to create impactful,
         user-friendly web applications.
       </p>
-
-      <div className="my-8">{/* <BlogPosts /> */}</div>
+      <div className="sm:mt-6 mt-10 text-sm sm:text-base ">
+        Email me :
+        <a href="mailto:wanafnanharizwz@gmail.com" className="font-semibold italic px-2">
+          wanafnanharizwz@gmail.com
+        </a>
+      </div>
     </section>
   );
 }
