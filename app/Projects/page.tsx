@@ -22,12 +22,14 @@ export default function page() {
           title={
             "My Sfera Ai (All-In-One Software Built For Retail Service Businesses)"
           }
+          imgSrc="/images/sfera-ai.png"
         ></ProjectCard>
 
         <ProjectCard
           title={
             "Prototype Point Of Sales (POS) inspired by Loyverse Pos System ( https://loyverse.com/download-loyverse ) "
           }
+          imgSrc="/images/pos.png"
           urls={[
             {
               name: "Point Of Sales (POS)",
@@ -46,6 +48,7 @@ export default function page() {
 
         <ProjectCard
           title={"Afco Advisory"}
+        imgSrc="/images/afco.png"
           urls={[
             {
               name: "https://www.afcoadvisory.com",
@@ -64,10 +67,12 @@ export default function page() {
               href: "https://baituljannah.ai/",
             },
           ]}
+          imgSrc="/images/bj.png"
           description={
             "Muslim Dating app. This Websites system use Laravel and Vue.js"
           }
         ></ProjectCard>
+
         <ProjectCard
           title={"Fun Exercise JS Vanilla 3D and animation"}
           urls={[
@@ -76,6 +81,7 @@ export default function page() {
               href: "https://afnan-dev.netlify.app/",
             },
           ]}
+          imgSrc="/images/3d-fun-js.png"
           description={
             "This website use Vanilla Js and CSS. May need to wait for some time to load the page "
           }
@@ -96,6 +102,7 @@ export default function page() {
         ></ProjectCard>
         <ProjectCard
           title={"My Old Profile Website"}
+          imgSrc="/images/afnan-old-profile.png"
           urls={[
             {
               name: "https://afnan-sea-dev.netlify.app/ ",
@@ -114,15 +121,17 @@ function ProjectCard({
   title = "",
   description = "",
   urls = [],
+  imgSrc,
 }: {
   children?: React.ReactNode;
   title?: any;
   description?: any;
   urls?: { href: string; name: string }[];
+  imgSrc?: string;
 }) {
   return (
-    <section className="my-1 hover:my-4 transition-all grid hover:bg-slate-700 grid-cols-2 md:grid-cols-4 border w-full transform hover:scale-110 transition duration-300">
-      <div className="border col-span-full row-span-3">
+    <section className="my-1 hover:my-4 transition-all grid hover:bg-slate-700 grid-cols-2 md:grid-cols-4 border rounded w-full transform hover:scale-110 transition duration-300">
+      <div className=" border-b col-span-full row-span-3">
         <div className="border-b font-bold p-2">{title}</div>
         {urls && (
           <ol key={"parent_urls"}>
@@ -150,12 +159,18 @@ function ProjectCard({
           <div className="p-2.5 col-span-full">{description}</div>
         )}
       </div>
-      <img
-        className="object-cover col-span-4 border relative"
-        width={"100%"}
-        height={480}
-        src="https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg"
-      />
+      {imgSrc && (
+        <img
+          className="object-cover col-span-4 border relative"
+          alt="img"
+          width={"100%"}
+          style={{
+            height: "390px",
+            backgroundSize: 'cover',
+          }}
+          src={imgSrc}
+        />
+      )}
     </section>
   );
 }
