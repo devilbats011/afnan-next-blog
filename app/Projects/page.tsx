@@ -3,10 +3,27 @@ import Projectstitle from "app/components/projectstitle";
 export default function page() {
   return (
     <>
-      <aside className="flex gap-2 justify-center p-1 mb-4">
+      <aside className="flex gap-2 justify-center p-1 mb-10">
         <Projectstitle />
       </aside>
       <div className="flex flex-col gap-10">
+        <ProjectCard
+          urls={[
+            {
+              name: "https://app.mysfera.co/",
+              href: "https://app.mysfera.co/admin/login",
+            },
+            {
+              name: "https://partner.mysfera.co/",
+              href: "https://partner.mysfera.co/admin/login",
+            },
+          ]}
+          description={"This Website use Laravel Filament and Livewire"}
+          title={
+            "My Sfera Ai (All-In-One Software Built For Retail Service Businesses)"
+          }
+        ></ProjectCard>
+
         <ProjectCard
           title={
             "Prototype Point Of Sales (POS) inspired by Loyverse Pos System ( https://loyverse.com/download-loyverse ) "
@@ -26,22 +43,7 @@ export default function page() {
             </p>
           </div>
         </ProjectCard>
-        <ProjectCard
-          urls={[
-            {
-              name: "https://app.mysfera.co/",
-              href: "https://app.mysfera.co/admin/login",
-            },
-            {
-              name: "https://partner.mysfera.co/",
-              href: "https://partner.mysfera.co/admin/login",
-            },
-          ]}
-          description={"This Website use Laravel Filament and Livewire"}
-          title={
-            "My Sfera Ai (All-In-One Software Built For Retail Service Businesses)"
-          }
-        ></ProjectCard>
+
         <ProjectCard
           title={"Afco Advisory"}
           urls={[
@@ -119,7 +121,7 @@ function ProjectCard({
   urls?: { href: string; name: string }[];
 }) {
   return (
-    <section className="grid hover:bg-slate-700 grid-cols-2 md:grid-cols-4 border w-full transform hover:scale-110 transition duration-300">
+    <section className="my-1 hover:my-4 transition-all grid hover:bg-slate-700 grid-cols-2 md:grid-cols-4 border w-full transform hover:scale-110 transition duration-300">
       <div className="border col-span-full row-span-3">
         <div className="border-b font-bold p-2">{title}</div>
         {urls && (
