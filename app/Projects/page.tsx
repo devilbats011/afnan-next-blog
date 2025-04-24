@@ -10,6 +10,20 @@ export default function page() {
         <ProjectCard
           urls={[
             {
+              name: "https://afnan-hutang.netlify.app",
+              href: "https://afnan-hutang.netlify.app/calendar",
+            },
+          ]}
+          description={"Personal Hutang with friend and family website"}
+          title={
+            "Afnan's hutang system"
+          }
+          imgSrc="/images/afnan-hutang-netlify.png"
+        ></ProjectCard>
+
+        <ProjectCard
+          urls={[
+            {
               name: "https://app.mysfera.co/",
               href: "https://app.mysfera.co/admin/login",
             },
